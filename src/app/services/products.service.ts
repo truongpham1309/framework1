@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Category, Product } from '../types/products';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class ProductsService {
 
   // private http = inject(HttpClient);
 
-  constructor(private http: HttpClient, private route: Router) { }
+  constructor(private http: HttpClient, private route: Router, private toastr: ToastrService) { }
 
   private getHeaders(): HttpHeaders {
     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YTIzMGU4YmM5ZDNkNGNkOTVmMDZkOCIsImlhdCI6MTcwNTM3NzkxMSwiZXhwIjoxNzA3OTY5OTExfQ.2Y3GPXMVXvQb7BQqflCDeDWXnbO4WcEX1Lx7Mz0DZOM';  // Thay YOUR_AUTH_TOKEN bằng token thực tế của bạn
@@ -46,7 +47,11 @@ export class ProductsService {
       headers: this.getHeaders(),
     }
     this.http.post<Product>(`${this.apiUrl}`, newProduct, options).subscribe(() => {
-      this.route.navigate(['/admin/products'])
+      this.route.navigate(['/admin/products']);
+      this.toastr.success("Created Product successfully!", "CREATE PRODUCT", {
+        positionClass: "toast-top-full-width",
+
+      });
     })
   }
 
@@ -56,6 +61,9 @@ export class ProductsService {
     }
     this.http.put<Product>(`${this.apiUrl}/${id}`, newProduct, options).subscribe(() => {
       this.route.navigate(['/admin/products']);
+      this.toastr.success("Updated Product successfully!", "UPDATE PRODUCT", {
+        positionClass: "toast-top-full-width",
+      });
     })
   }
 

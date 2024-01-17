@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Product } from '../../../../types/products';
 import { ProductsService } from '../../../../services/products.service';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 
@@ -15,11 +15,19 @@ import { ToastrService } from 'ngx-toastr';
 export class AdminProductsComponent implements OnInit {
   products: Product[] = [];
   idPr: string = "";
+  edit: boolean = false;
+  add: boolean = false;
 
-  constructor(private Product: ProductsService) { }
+  constructor(private Product: ProductsService, private route: ActivatedRoute ) { }
   ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      if(params.get("edit")) this.edit = true;
+      if(params.get("add")) this.add = true;
+    })
     this.Product.getAllProducts().subscribe(data => {
-      this.products = data
+      this.products = data;
+      if(this.add) this.toastr.success("Create product successfully!", "CREATE PRODUCT");
+      if(this.edit) this.toastr.success("Edit product successfully!", "EDIT PRODUCT");
     })
   }
   toastr = inject(ToastrService);
