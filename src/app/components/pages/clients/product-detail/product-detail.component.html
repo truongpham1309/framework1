@@ -1,0 +1,97 @@
+<section class="py-20 overflow-hidden bg-white font-poppins ">
+    <div class="max-w-6xl px-4 py-4 mx-auto lg:py-8 md:px-6">
+        <div class="flex flex-wrap -mx-4">
+            <div class="w-full px-4 md:w-1/2 ">
+                <div class="sticky top-0 z-50 overflow-hidden">
+                    <div class="relative mb-6 lg:mb-10" style='height: 450px'>
+                        <img [src]='product.image' alt="Updating..." class="object-contain w-full h-full " />
+                    </div>
+                </div>
+            </div>
+            <div class="w-full px-4 md:w-1/2">
+                <div class="lg:pl-20">
+                    <div class="pb-6 mb-8 border-b border-gray-200 ">
+                        <span class="text-lg font-medium text-rose-500 ">
+                            New
+                        </span>
+                        <h2 class="max-w-xl mt-2 mb-6 text-gray-700 text-xl font-bold md:text-4xl">
+                            {{product.title || "Updating..."}}
+                        </h2>
+                        <app-products-rate [rateInit]="product.rate"></app-products-rate>
+                        <p class="my-3">{{product.category || "Updating..."}}</p>
+                        <!-- Rating -->
+                        <p class="max-w-md mb-8 text-gray-700">
+                            {{product.description || "Updating..."}}
+                        </p>
+                        <div class="p-4 mb-8 border border-gray-300">
+                            <h2 class="mb-4 text-xl font-semibold ">
+                                Real time
+                                <span class="px-2 bg-blue-500 text-gray-50">200</span>
+                                visitors right now!
+                            </h2>
+                            <div class="mb-1 text-xs font-medium text-gray-700">
+                                Hurry up! left 23 in Stock
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%F"></div>
+                            </div>
+                        </div>
+                        <p class="inline-block text-2xl font-semibold text-gray-700">
+                            <span>${{product.price || "Updating..."}}</span>
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap items-center ">
+                        <div class="mb-4 mr-4 lg:mb-0">
+                            <div class="w-28">
+                                <div class="relative flex flex-row w-full h-10 bg-transparent rounded-lg">
+                                    <button
+                                        class="w-20 h-full text-gray-600 bg-gray-100 border-r rounded-l outline-none cursor-pointer dark:text-gray-400 hover:text-gray-700 hover:bg-gray-300">
+                                        <span class="m-auto text-2xl font-thin">-</span>
+                                    </button>
+                                    <input type="number"
+                                        class="remove-arrow input-wrapper flex items-center w-full font-semibold text-center text-gray-700 placeholder-gray-700 bg-gray-100 outline-none dark:text-gray-400  focus:outline-none text-md hover:text-black"
+                                        placeholder="1" />
+                                    <button
+                                        class="w-20 h-full text-gray-600 bg-gray-100 border-l rounded-r outline-none cursor-pointer dark:text-gray-400 hover:text-gray-700 hover:bg-gray-300">
+                                        <span class="m-auto text-2xl font-thin">+</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4 mr-4 lg:mb-0">
+                            <button
+                                class="w-full h-10 p-2 mr-4 bg-blue-500 dark:text-gray-200 text-gray-50 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-500">
+                                Buy Now
+                            </button>
+                        </div>
+                        <div class="mb-4 mr-4 lg:mb-0">
+                            <button
+                                class="flex items-center justify-center w-full h-10 p-2 text-gray-700 border border-gray-300 lg:w-11 hover:text-gray-50 dark:text-gray-200 dark:border-blue-600 hover:bg-blue-600 hover:border-blue-600 dark:bg-blue-600 dark:hover:bg-blue-500 dark:hover:border-blue-500 dark:hover:text-gray-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-cart" viewBox="0 0 16 16">
+                                    <path
+                                        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="mb-4 lg:mb-0">
+                            <button
+                                class="flex items-center justify-center w-full h-10 p-2 text-gray-700 border border-gray-300 lg:w-11 hover:text-gray-50 dark:text-gray-200 dark:border-blue-600 hover:bg-blue-600 hover:border-blue-600 dark:bg-blue-600 dark:hover:bg-blue-500 dark:hover:border-blue-500 dark:hover:text-gray-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class=" bi bi-heart" viewBox="0 0 16 16">
+                                    <path
+                                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2 class="py-4 font-bold text-gray-800 text-center lg:text-3xl">PRODUCTS RELATED</h2>
+    <div class="mt-6 mx-5 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+        <app-product-card *ngFor="let pr of productsRelated" [product]="pr"></app-product-card>
+    </div>
+
+</section>
