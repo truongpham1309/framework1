@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ProductsService } from '../../../../services/products.service';
 import { ActivatedRoute } from '@angular/router';
 import { Category, Product } from '../../../../types/products';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-product-edit',
@@ -36,7 +37,7 @@ export class AdminProductEditComponent {
 
   constructor(private ProductService: ProductsService, private route: ActivatedRoute) { }
 
-  // toastr = inject(ToastrService);
+  toastr = inject(ToastrService);
 
   ngOnInit(): void {
 
@@ -52,43 +53,43 @@ export class AdminProductEditComponent {
     })
   }
 
-  // validateFormProduct(product: Omit<Product, "_id">) {
-  //   let valid: boolean = false;
-  //   if (product.title.trim().length === 0) {
-  //     valid = true;
-  //     this.toastr.error("Title is required!");
-  //   }
-  //   if (product.description.trim().length === 0) {
-  //     valid = true;
-  //     this.toastr.error("Description is required!");
-  //   }
-  //   if (product.price <= 0) {
-  //     valid = true;
-  //     this.toastr.error("Price is greater than 0!");
-  //   }
-  //   if (product.rate <= 0 ) {
-  //     valid = true;
-  //     this.toastr.error("Rate is greater than 0!");
-  //   }
-  //   if (product.category.trim().length === 0) {
-  //     valid = true;
-  //     this.toastr.error("Category is required!");
-  //   }
-  //   if (product.image.trim().length === 0) {
-  //     valid = true;
-  //     this.toastr.error("Image is required!");
-  //   }
+  validateFormProduct(product: Omit<Product, "_id">) {
+    let valid: boolean = false;
+    if (product.title.trim().length === 0) {
+      valid = true;
+      this.toastr.error("Title is required!");
+    }
+    if (product.description.trim().length === 0) {
+      valid = true;
+      this.toastr.error("Description is required!");
+    }
+    if (product.price <= 0) {
+      valid = true;
+      this.toastr.error("Price is greater than 0!");
+    }
+    if (product.rate <= 0 ) {
+      valid = true;
+      this.toastr.error("Rate is greater than 0!");
+    }
+    if (product.category.trim().length === 0) {
+      valid = true;
+      this.toastr.error("Category is required!");
+    }
+    if (product.image.trim().length === 0) {
+      valid = true;
+      this.toastr.error("Image is required!");
+    }
 
-  //   return valid;
-  // }
+    return valid;
+  }
 
   handleSubmit() {
 
     const { title, price, image, category, description, rate } = this.productUpdate;
-    // if (this.validateFormProduct({ title, price, image, category, description, rate })) {
-    //   this.ngOnInit();
-    //   return;
-    // }
+    if (this.validateFormProduct({ title, price, image, category, description, rate })) {
+      this.ngOnInit();
+      return;
+    }
     this.ProductService.updateProduct({ title, price, image, category, description, rate }, this.productUpdate._id)
   }
 

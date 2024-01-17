@@ -14,7 +14,6 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AdminProductsComponent implements OnInit {
   products: Product[] = [];
-
   idPr: string = "";
 
   constructor(private Product: ProductsService) { }
@@ -22,8 +21,6 @@ export class AdminProductsComponent implements OnInit {
     this.Product.getAllProducts().subscribe(data => {
       this.products = data
     })
-
-
   }
   toastr = inject(ToastrService);
   handleRemoveProduct(id: string): void {
@@ -32,9 +29,8 @@ export class AdminProductsComponent implements OnInit {
     this.Product.removeProduct([id]).subscribe(
       () => {
         this.products = this.products.filter(p => p._id !== id);
-        alert('Product removed successfully.');
+        // alert('Product removed successfully.');
         this.toastr.success("Product removed successfully!", "Success!");
-
 
         // Gọi các bước cần thiết sau khi xóa sản phẩm thành công
       },
