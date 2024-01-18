@@ -1,21 +1,24 @@
 <div class="font-bold text-3xl text-center" toastContainer>
     <h1 class="font-bold text-center py-5 uppercase ">Products List Admin</h1>
     <div class="relative overflow-x-auto shadow-md">
-        <!-- <form>
+        <form>
             <label htmlFor="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
                 Search
             </label>
             <div class="relative">
                 <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg class="w-4 h-4 text-gray-500 " aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <svg class="w-4 h-4 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 20 20">
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                             d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                     </svg>
                 </div>
-                 Form search
+                <input type="search" id="default-search" [(ngModel)]="keywords" (input)="handelChangeInputSearchProduct()"
+                    name="keywords"
+                    class="outline-none mb-4 block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Search Name Product..." />
             </div>
-        </form> -->
+        </form>
 
         <table class="w-full rounded-md text-sm text-left rtl:text-right text-gray-500 ">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50  ">
