@@ -67,6 +67,8 @@ export class ProductsService {
     })
   }
 
+  // Description 
+
   removeProduct(id: string[]): Observable<any> {
 
     const headers = this.getHeaders();

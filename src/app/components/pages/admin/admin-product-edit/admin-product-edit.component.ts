@@ -26,15 +26,6 @@ export class AdminProductEditComponent {
   Category: Category[] = [];
   idPr: string = "";
 
-  newProduct: Omit<Product, "_id"> = {
-    title: "",
-    price: 0,
-    image: "",
-    category: "",
-    description: "",
-    rate: 0,
-  }
-
   constructor(private ProductService: ProductsService, private route: ActivatedRoute) { }
 
   toastr = inject(ToastrService);
@@ -67,7 +58,7 @@ export class AdminProductEditComponent {
       valid = true;
       this.toastr.error("Price is greater than 0!");
     }
-    if (product.rate <= 0 ) {
+    if (product.rate <= 0) {
       valid = true;
       this.toastr.error("Rate is greater than 0!");
     }
@@ -79,7 +70,6 @@ export class AdminProductEditComponent {
       valid = true;
       this.toastr.error("Image is required!");
     }
-
     return valid;
   }
 

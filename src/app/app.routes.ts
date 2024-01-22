@@ -10,10 +10,13 @@ import { HomePageComponent } from './components/pages/clients/home-page/home-pag
 import { ProductsListComponent } from './components/pages/clients/products-list/products-list.component';
 import { ProductDetailComponent } from './components/pages/clients/product-detail/product-detail.component';
 import { NotFoundComponent } from './components/pages/clients/not-found/not-found.component';
+import { RegisterComponent } from './components/pages/clients/register/register.component';
+import { routerGuard } from './guards/router.guard';
 
 export const routes: Routes = [
     {
         path: "admin",
+        canActivate: [routerGuard],
         component: LayoutAdminComponent,
         children: [
             {
@@ -42,6 +45,10 @@ export const routes: Routes = [
     {
         path: "login",
         component: LoginComponent,
+    },
+    {
+        path: "signup",
+        component: RegisterComponent,
     },
     {
         path: "",
