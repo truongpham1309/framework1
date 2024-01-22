@@ -11,10 +11,12 @@ import { ProductsListComponent } from './components/pages/clients/products-list/
 import { ProductDetailComponent } from './components/pages/clients/product-detail/product-detail.component';
 import { NotFoundComponent } from './components/pages/clients/not-found/not-found.component';
 import { RegisterComponent } from './components/pages/clients/register/register.component';
+import { routerGuard } from './guards/router.guard';
 
 export const routes: Routes = [
     {
         path: "admin",
+        canActivate: [routerGuard],
         component: LayoutAdminComponent,
         children: [
             {
