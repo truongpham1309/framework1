@@ -25,44 +25,32 @@ export class LoginComponent implements OnInit {
     email: "",
     password: "",
   };
-  isBackground = false;
+
+  isLogin = false;
 
   ngOnInit(): void {
-    if(sessionStorage.getItem("token")){
+    if (sessionStorage.getItem("token")) {
       this.router.navigateByUrl("/home");
-      this.toastr.info("Bạn đã đăng nhập!", "", {
-        positionClass: 'toast-top-full-width',
-      })
+      this.toastr.info("Bạn đã đăng nhập!", "")
     }
   }
 
-  handleValidInput(e: HTMLInputElement) {
-    if (!e.value) {
-      if (e.name === "email") {
-        this.valid.email = `${e.name} is required!`;
-        this.isBackground = false;
-        return false;
-      }
-      else if (e.name === "password") {
-        this.valid.password = `${e.name} is required!`;
-        this.isBackground = false;
-        return false;
-      }
+  handleValidInput() {
+    if (this.account.email.trim().length === 0) {
+      this.valid.email = "Email is required!";
+      this.isLogin = false;
     }
-    else {
-      this.valid = {
-        email: "",
-        password: "",
-      }
-      this.isBackground = true;
+    if (this.account.password.trim().length === 0) {
+      this.valid.password = "Password is required!";
+      this.isLogin = false;
     }
-    return true;
+    if (this.account.email.trim().length === 0 && this.account.password.trim().length === 0) this.isLogin = true;
+
+    return this.isLogin;
   }
 
   handleSubmitLogin() {
-
-    if (!this.account.email || !this.account.password) return;
-
+    if (this.handleValidInput()) return;
     this.auth.loginAccount(this.account);
   }
 

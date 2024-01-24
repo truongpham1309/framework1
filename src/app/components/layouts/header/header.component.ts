@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +9,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent{
 
   isLogout = false;
 
@@ -20,10 +20,11 @@ export class HeaderComponent implements OnInit {
     { id: 3, name: "Contact", slug: "/contact" },
   ];
 
-  ngOnInit() {
-    const token: string | null = sessionStorage.getItem('token');
+  constructor(private router: Router) {}
 
-    if (token) {
+  ngOnInit() {
+
+    if (sessionStorage.getItem('token')) {
       this.menuList.push({ id: 4, name: "Admin", slug: "/admin", });
       this.isLogout = true;
     }
@@ -41,8 +42,7 @@ export class HeaderComponent implements OnInit {
 
   handleLogOutAccount() {
     if(!confirm('Are you sure you want to log out?')) return;
-
     sessionStorage.removeItem("token");
-    window.location.reload();
+    this.router.navigateByUrl("/login");
   }
 }

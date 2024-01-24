@@ -49,7 +49,7 @@ export class RegisterComponent {
   }
 
   handleSubmitRegister() {
-    if(!this.handleValidFormRegister()) return;
+    if(this.handleValidFormRegister()) return;
     this.auth.registerAccount(this.account);
   }
 }
