@@ -12,3 +12,8 @@ export type responseDataLogin = {
         role: "admin" | "member";
     }
 }
+
+export type ValidLogin = {
+    email: string;
+    password: string;
+}
