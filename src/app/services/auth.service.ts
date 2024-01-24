@@ -25,7 +25,9 @@ export class AuthService {
       this.loginAccount({email, password});
     },(error) => {
       console.log(error);
-      this.toastr.warning("Register failed!");
+      this.toastr.warning("Register failed!","",{
+        
+      });
     }
     );
   }
