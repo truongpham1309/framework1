@@ -21,12 +21,12 @@ export class AuthService {
 
   registerAccount(account: User): void {
     this.http.post<User>(`${this.apiURL}/register`, account).subscribe(data => {
-      const {email, password} = account;
-      this.loginAccount({email, password});
-    },(error) => {
+      const { email, password } = account;
+      this.loginAccount({ email, password });
+    }, (error) => {
       console.log(error);
-      this.toastr.warning("Register failed!","",{
-        
+      this.toastr.warning("Register failed!", "", {
+
       });
     }
     );
@@ -34,10 +34,16 @@ export class AuthService {
 
   loginAccount(account: Omit<User, "username">): void {
     this.http.post<responseDataLogin>(`${this.apiURL}/login`, account).subscribe((data) => {
-      sessionStorage.setItem("token", data.token);
+      
 
-      if(data.user.role === "admin") this.route.navigateByUrl("/admin");
-      else this.route.navigateByUrl("/products");
+      if (data.user.role === "admin") {
+        this.route.navigateByUrl("/admin");
+        sessionStorage.setItem("token_admin", data.token);
+      }
+      else {
+        this.route.navigateByUrl("/products");
+        sessionStorage.setItem("token", data.token);
+      }
     }, (error) => {
       this.toastr.warning("Email or password incorrect!");
     }
