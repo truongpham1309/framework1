@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { Category, Product } from '../../../../types/products';
-import { ProductsService } from '../../../../services/products.service';
+import { Category, Product } from '../../../../../types/products';
+import { ProductsService } from '../../../../../services/products.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';

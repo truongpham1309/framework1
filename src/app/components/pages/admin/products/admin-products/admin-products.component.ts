@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../../../types/products';
-import { ProductsService } from '../../../../services/products.service';
+import { Product } from '../../../../../types/products';
+import { ProductsService } from '../../../../../services/products.service';
 import { ToastrService } from 'ngx-toastr';
 import Fuse from 'fuse.js';
 import { CommonModule } from '@angular/common';
