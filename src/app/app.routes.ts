@@ -12,6 +12,12 @@ import { ProductDetailComponent } from './components/pages/clients/product-detai
 import { NotFoundComponent } from './components/pages/clients/not-found/not-found.component';
 import { RegisterComponent } from './components/pages/clients/register/register.component';
 import { routerGuard } from './guards/router.guard';
+import { AdminCateListComponent } from './components/pages/admin/categories/admin-cate-list/admin-cate-list.component';
+import { AdminCateUpdateComponent } from './components/pages/admin/categories/admin-cate-update/admin-cate-update.component';
+import { AdminUserListComponent } from './components/pages/admin/users/admin-user-list/admin-user-list.component';
+import { AdminUserCreateComponent } from './components/pages/admin/users/admin-user-create/admin-user-create.component';
+import { AdminUserUpdateComponent } from './components/pages/admin/users/admin-user-update/admin-user-update.component';
+import { AdminCateCreateComponent } from './components/pages/admin/categories/admin-cate-create/admin-cate-create.component';
 
 export const routes: Routes = [
     {
@@ -39,6 +45,30 @@ export const routes: Routes = [
             {
                 path: "products_edit/:idPr",
                 component: AdminProductEditComponent,
+            },
+            {
+                path: "categories",
+                component: AdminCateListComponent,
+            },
+            {
+                path: "categories/create",
+                component: AdminCateCreateComponent,
+            },
+            {
+                path: "categories/edit/:idCate",
+                component: AdminCateUpdateComponent,
+            },
+            {
+                path: "users",
+                component: AdminUserListComponent,
+            },
+            {
+                path: "users/create",
+                component: AdminUserCreateComponent,
+            },
+            {
+                path: "user/edit/:idUser",
+                component: AdminUserUpdateComponent,
             }
         ]
     },

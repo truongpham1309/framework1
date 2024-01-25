@@ -22,9 +22,9 @@ export class HeaderComponent{
 
   constructor(private router: Router) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
 
-    if (sessionStorage.getItem('token')) {
+    if (sessionStorage?.getItem('token') || sessionStorage?.getItem('token_admin')) {
       this.menuList.push({ id: 4, name: "Admin", slug: "/admin", });
       this.isLogout = true;
     }
@@ -39,10 +39,10 @@ export class HeaderComponent{
   onClickMenu(): void {
     this.navigationHiddenOrShow = !this.navigationHiddenOrShow;
   }
-
   handleLogOutAccount() {
     if(!confirm('Are you sure you want to log out?')) return;
     sessionStorage.removeItem("token");
+    sessionStorage.removeItem("token_admin");
     this.router.navigateByUrl("/login");
   }
 }
