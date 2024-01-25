@@ -3,9 +3,9 @@ import { LayoutAdminComponent } from './components/layouts/layout-admin/layout-a
 import { LayoutClientComponent } from './components/layouts/layout-client/layout-client.component';
 import { LoginComponent } from './components/pages/clients/login/login.component';
 import { AdminDashboardComponent } from './components/pages/admin/admin-dashboard/admin-dashboard.component';
-import { AdminProductsComponent } from './components/pages/admin/admin-products/admin-products.component';
-import { AdminProductCreateComponent } from './components/pages/admin/admin-product-create/admin-product-create.component';
-import { AdminProductEditComponent } from './components/pages/admin/admin-product-edit/admin-product-edit.component';
+import { AdminProductsComponent } from './components/pages/admin/products/admin-products/admin-products.component';
+import { AdminProductCreateComponent } from './components/pages/admin/products/admin-product-create/admin-product-create.component';
+import { AdminProductEditComponent } from './components/pages/admin/products/admin-product-edit/admin-product-edit.component';
 import { HomePageComponent } from './components/pages/clients/home-page/home-page.component';
 import { ProductsListComponent } from './components/pages/clients/products-list/products-list.component';
 import { ProductDetailComponent } from './components/pages/clients/product-detail/product-detail.component';

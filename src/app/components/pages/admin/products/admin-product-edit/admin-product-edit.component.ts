@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ProductsService } from '../../../../services/products.service';
 import { ActivatedRoute } from '@angular/router';
-import { Category, Product } from '../../../../types/products';
 import { ToastrService } from 'ngx-toastr';
+import { Category, Product } from '../../../../../types/products';
+import { ProductsService } from '../../../../../services/products.service';
 
 @Component({
   selector: 'app-admin-product-edit',
@@ -35,6 +35,7 @@ export class AdminProductEditComponent {
     this.route.paramMap.subscribe(params => {
       this.idPr = String(params.get('idPr'));
     })
+    
     this.ProductService.getDetailProduct(this.idPr).subscribe(data => {
       this.productUpdate = data;
     })

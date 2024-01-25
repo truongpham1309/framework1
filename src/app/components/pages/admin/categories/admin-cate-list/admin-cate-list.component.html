@@ -1,18 +1,12 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50  ">
-            <tr>
+    <table class="w-full text-sm text-gray-500 text-center">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+            <tr class="w-full flex justify-between">
                 <th scope="col" class="px-6 py-3">
-                    Product name
+                    #
                 </th>
-                <th scope="col" class="px-6 py-3">
-                    Color
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Category
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Price
+                <th scope="col" class="px-6 py-3 text-center">
+                    Category name
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Action
@@ -20,22 +14,17 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="odd:bg-white  even:bg-gray-50  border-b ">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                    Apple MacBook Pro 17"
+            <tr class="odd:bg-white  even:bg-gray-50 border-b w-full flex justify-between">
+                <th scope="row" class="px-6 py-3 font-medium text-gray-900 whitespace-nowrap ">
+                    1
                 </th>
-                <td class="px-6 py-4">
-                    Silver
+                <td class="px-6 py-3 text-center">
+                    Category 1
                 </td>
-                <td class="px-6 py-4">
-                    Laptop
-                </td>
-                <td class="px-6 py-4">
-                    $2999
-                </td>
-                <td class="px-6 py-4">
+                <td class="px-6 py-3">
                     <button class="px-2 py-3 bg-red-500 rounded-md text-white font-medium">REMOVE</button>
-                    <a routerLink="/admin/categories/edit/2" class="font-medium text-blue-600 hover:underline"><button class="ml-4 px-5 py-3 bg-green-500 rounded-md text-white font-medium">EDIT</button></a>
+                    <a routerLink="/admin/categories/edit/2" class="font-medium text-blue-600 hover:underline"><button
+                            class="ml-4 px-5 py-3 bg-green-500 rounded-md text-white font-medium">EDIT</button></a>
                 </td>
             </tr>
         </tbody>
