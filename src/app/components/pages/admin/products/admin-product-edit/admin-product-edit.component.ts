@@ -75,7 +75,6 @@ export class AdminProductEditComponent {
   }
 
   handleSubmit() {
-
     const { title, price, image, category, description, rate } = this.productUpdate;
     if (this.validateFormProduct({ title, price, image, category, description, rate })) {
       this.ngOnInit();

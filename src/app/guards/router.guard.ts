@@ -9,9 +9,9 @@ export const routerGuard: CanActivateFn = (route, state) => {
   const token_admin = sessionStorage.getItem('token_admin');
 
   if (token_admin){
-    toastr.success("Chào mừng bạn đến với trang quản trị!","", {
-      positionClass:"toast-top-full-width"
-    })
+    // toastr.success("Chào mừng bạn đến với trang quản trị!","", {
+    //   positionClass:"toast-top-full-width"
+    // })
     return true;
   }
   else if(sessionStorage.getItem("token")){

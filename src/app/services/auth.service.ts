@@ -14,7 +14,7 @@ export class AuthService {
   constructor(private http: HttpClient, private route: Router, private toastr: ToastrService) { }
 
   private getHeaders(): HttpHeaders {
-    if(!sessionStorage.getItem('token_admin')) this.route.navigateByUrl("/login");
+    if (!sessionStorage.getItem('token_admin')) this.route.navigateByUrl("/login");
     const token = sessionStorage.getItem('token_admin');
     return new HttpHeaders({
       'Content-Type': 'application/json',
@@ -22,7 +22,7 @@ export class AuthService {
     })
   }
 
-  registerAccount(account: User): void {
+  registerAccount(account: Omit<User, "_id" | "role">): void {
     this.http.post<User>(`${this.apiURL}/register`, account).subscribe(data => {
       const { email, password } = account;
       this.loginAccount({ email, password });
@@ -35,7 +35,7 @@ export class AuthService {
     );
   }
 
-  loginAccount(account: Omit<User, "username">): void {
+  loginAccount(account: Omit<User, "username" | "_id" | "role">): void {
     this.http.post<responseDataLogin>(`${this.apiURL}/login`, account).subscribe((data) => {
       if (data.user.role === "admin") {
         this.route.navigateByUrl("/admin");
@@ -52,13 +52,16 @@ export class AuthService {
   }
 
   getAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.apiURL);
-  }
-
-  removeUser(id: string): void {
     const options = {
       headers: this.getHeaders(),
     }
-    this.http.delete(`${this.apiURL}/${id}`, options)
+    return this.http.get<User[]>(this.apiURL, options);
+  }
+
+  removeUser(id: string): Observable<User> {
+    const options = {
+      headers: this.getHeaders(),
+    }
+    return this.http.delete<User>(`${this.apiURL}/${id}`, options);
   }
 }
