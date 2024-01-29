@@ -9,6 +9,6 @@ export type Product = {
 }
 
 export type Category = {
-    id: string,
+    id: number,
     category: string,
 }

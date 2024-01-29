@@ -26,41 +26,31 @@ export class CategoryService {
     return this.http.get<Category[]>(this.apiURL);
   }
 
-  getDetailCategory(id: string): Observable<Category> {
+  getDetailCategory(id: number): Observable<Category> {
     return this.http.get<Category>(`${this.apiURL}/${id}`);
   }
 
-  removeCategory(id: string): void {
-    if (!confirm('Are you sure you want to remove this category?')) return;
+  removeCategory(id: number): Observable<Category> {
     const options = {
       headers: this.getHeaders(),
     }
-    this.http.delete(`${this.apiURL}/${id}`, options).subscribe(() => {
-      this.toastr.success("Removed category successfully!", "");
-    }, (error) => {
-      console.log(error);
-      this.toastr.error("Deleted category successfully!", "");
-    })
+    return this.http.delete<Category>(`${this.apiURL}/${id}`, options);
   }
 
-  updateCategory(Cate: Category): void {
+  updateCategory(Cate: Category): Observable<Category>  {
     const options = {
       headers: this.getHeaders(),
     }
-    this.http.put<Category>(this.apiURL, Cate, options).subscribe(() => {
-      this.toastr.success("Update category successfully!", "");
-    }, (error) => {
-      console.log(error);
-      this.toastr.error("Update category failed!", "");
-    })
+    return this.http.put<Category>(`${this.apiURL}/${Cate.id}`, Cate, options);
   }
 
-  createCategory(newCategory: Category): void {
+  createCategory(newCategory: Omit<Category, "id">): void {
     const options = {
       headers: this.getHeaders(),
     }
     this.http.post<Category>(this.apiURL, newCategory, options).subscribe(() => {
       this.toastr.success("Category created successfully!", "");
+      this.router.navigateByUrl("/admin/categories")
     }, error => {
       console.log(error);
       this.toastr.error("Update category failed!", "");

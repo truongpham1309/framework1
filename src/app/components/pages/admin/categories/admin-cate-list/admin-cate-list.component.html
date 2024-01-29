@@ -1,4 +1,11 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <div class="w-full text-sm text-gray-500 my-5 text-right">
+        <a class="px-2 py-3 bg-green-500 rounded-md text-white font-medium" routerLink="/admin/categories/create">
+            <button>
+                Create Category
+            </button>
+        </a>
+    </div>
     <table class="w-full text-sm text-gray-500 text-center">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
             <tr class="w-full flex justify-between">
@@ -14,19 +21,27 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="odd:bg-white  even:bg-gray-50 border-b w-full flex justify-between">
-                <th scope="row" class="px-6 py-3 font-medium text-gray-900 whitespace-nowrap ">
-                    1
-                </th>
-                <td class="px-6 py-3 text-center">
-                    Category 1
-                </td>
-                <td class="px-6 py-3">
-                    <button class="px-2 py-3 bg-red-500 rounded-md text-white font-medium">REMOVE</button>
-                    <a routerLink="/admin/categories/edit/2" class="font-medium text-blue-600 hover:underline"><button
-                            class="ml-4 px-5 py-3 bg-green-500 rounded-md text-white font-medium">EDIT</button></a>
-                </td>
-            </tr>
+
+            <ng-container *ngFor="let cate of Cate_list; let i = index">
+                <tr class="odd:bg-white  even:bg-gray-50 border-b w-full flex justify-between">
+                    <th scope="row" class="px-6 py-3 font-medium text-gray-900 whitespace-nowrap">
+                        {{ i + 1}}
+                    </th>
+                    <td class="px-6 py-3 text-center">
+                        {{ cate.category }}
+                    </td>
+                    <td class="px-6 py-3">
+                        <button (click)="handleClickRemoveCategory(cate.id)" class="px-2 py-2 bg-red-500 rounded-md text-white font-medium">REMOVE</button>
+                        <a routerLink="/admin/categories/edit/{{cate.id}}"
+                            class="font-medium text-blue-600 hover:underline">
+                            <button class="ml-2 px-5 py-2 bg-green-500 rounded-md text-white font-medium">
+                                EDIT
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+            </ng-container>
+
         </tbody>
     </table>
 </div>

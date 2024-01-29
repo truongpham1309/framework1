@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-  account: User = {
+  account: Omit<User, "_id" | "role"> = {
     username: "",
     email: "",
     password: "",
@@ -30,26 +30,26 @@ export class RegisterComponent {
   constructor(private auth: AuthService) { }
 
   handleValidFormRegister() {
-   if(!this.account.username){
-    this.valid.username = `Username is required`;
-    this.isRegister = false;
-   }
-   if(!this.account.password){
-    this.valid.password = `Password is required`;
-    this.isRegister = false;
-   }
-   if(!this.account.email){
-    this.valid.email = `Email is required`;
-    this.isRegister = false;
-   }
+    if (!this.account.username) {
+      this.valid.username = `Username is required`;
+      this.isRegister = false;
+    }
+    if (!this.account.password) {
+      this.valid.password = `Password is required`;
+      this.isRegister = false;
+    }
+    if (!this.account.email) {
+      this.valid.email = `Email is required`;
+      this.isRegister = false;
+    }
 
-   if(this.account.email && this.account.password && this.account.username) this.isRegister = true;
+    if (this.account.email && this.account.password && this.account.username) this.isRegister = true;
 
-   return this.isRegister;
+    return this.isRegister;
   }
 
   handleSubmitRegister() {
-    if(this.handleValidFormRegister()) return;
+    if (this.handleValidFormRegister()) return;
     this.auth.registerAccount(this.account);
   }
 }
