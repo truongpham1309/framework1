@@ -3,7 +3,7 @@ import { User } from '../../../../../types/users';
 import { AuthService } from '../../../../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { DescriptionPipe } from '../../../../../pipes/description.pipe';
-import { Toast, ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -14,7 +14,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './admin-user-list.component.css'
 })
 export class AdminUserListComponent implements OnInit {
-  Users: User[] = [];
+  Users: Omit<User, "role">[] = [];
   constructor(private auth: AuthService, private toastr: ToastrService) {}
   ngOnInit(): void {
     this.auth.getAllUsers().subscribe(data => {
@@ -22,7 +22,7 @@ export class AdminUserListComponent implements OnInit {
     })
   }
 
-  handleClickRemoveUser(id:string) {
+  handleClickRemoveUser(id:number) {
     if(!confirm('Are you sure you want to remove?')) return;
 
     this.auth.removeUser(id).subscribe( () => {

@@ -67,7 +67,7 @@ export const routes: Routes = [
                 component: AdminUserCreateComponent,
             },
             {
-                path: "user/edit/:idUser",
+                path: "users/edit/:idUser",
                 component: AdminUserUpdateComponent,
             }
         ]
