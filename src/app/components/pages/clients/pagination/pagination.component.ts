@@ -10,7 +10,9 @@ import { RouterLink } from '@angular/router';
   styleUrl: './pagination.component.css'
 })
 export class PaginationComponent {
-  @Input() total: number = 5;
 
-  dummyArray = new Array(this.total);
+  @Input() total: number = 0;
+  @Input() page: number = 0
+
+  dummyArray = [1,2,3,4,5,6,7];
 }

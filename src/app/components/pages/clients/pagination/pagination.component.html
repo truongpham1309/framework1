@@ -12,7 +12,7 @@
             </a>
         </li>
         <ng-container *ngFor="let item of dummyArray; let i = index">
-            <li>
+            <li *ngIf="i < total" [ngClass]="{'hover:bg-gray-100 hover:text-gray-700': i === page + 1}">
                 <a href="/products?page={{i + 1}}"
                     class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ">{{i + 1}}</a>
             </li>
