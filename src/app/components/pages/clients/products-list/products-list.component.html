@@ -1,4 +1,4 @@
-<div class="bg-white">
+<div class="bg-white" >
     <div class="mx-auto max-w-2xl py-4 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <h2 class="text-2xl font-bold tracking-tight text-gray-900">
             Products List
@@ -35,26 +35,29 @@
                             d="m1 1 4 4 4-4" />
                     </svg>
                 </button>
-                <!-- Dropdown menu -->
                 <div id="dropdownAction" [ngClass]="{'block': isDisplayBlock, 'hidden': !isDisplayBlock}"
-                    class="z-10 block bg-white divide-y divide-gray-100 rounded-lg shadow w-44 overflow-y-auto"
+                    class="z-10 block bg-white divide-y divide-gray-100 rounded-lg shadow w-52 overflow-y-auto"
                     style="max-height: 120px;">
-                    <ul class="py-1 text-sm text-gray-700 relative" aria-labelledby="dropdownActionButton">
-                        <li>
+                    <ul class="py-1 text-sm text-gray-700 relative w-full" aria-labelledby="dropdownActionButton">
+                        <li class="w-[90%] cursor-auto" >
                             <a (click)="handleFilterCategory(defautlString)"
-                                class="block px-4 py-2 hover:bg-gray-100">AllProducts</a>
+                                class="block cursor-auto px-4 py-2 hover:bg-gray-100">AllProducts</a>
                         </li>
-                        <li *ngFor="let cate of categoryList">
+                        <li class="w-[90%] cursor-auto" *ngFor="let cate of categoryList">
                             <a (click)="handleFilterCategory(cate.category)"
-                                class="block px-4 py-2 hover:bg-gray-100 ">{{cate.category}}</a>
+                                class="block px-4 cursor-auto py-2 hover:bg-gray-100 ">{{cate.category}}</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+        <div *ngIf="productsList && productsList.length > 0; else productNull" class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             <app-product-card *ngFor="let productItem of productsList" [product]="productItem"></app-product-card>
         </div>
-        <app-pagination [total]="totalPages"></app-pagination>
+        <app-pagination *ngIf="totalPages > 1" [total]="totalPages" [page]="PageIndex"></app-pagination>
     </div>
 </div>
+
+<ng-template #productNull>
+    <h3 class="text-center font-bold uppercase text-xl my-4">Không có sản phẩm nào!</h3>
+</ng-template>
